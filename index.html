@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>phocom docs</title>
+	<meta charset="utf-8">
+	<script src="./script.js"></script>
+	<link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+
+<body>
+	<script type="text/javascript">
+		function showDoc(docId) {
+			ajax('https://1d878d9b.us-south.apigw.appdomain.cloud/showDoc/', { 'id': docId }, function (data) {
+				let str = "";
+				str += `<h2>${data.title}</h2>`;
+				str += `<div>${data.text}</div>`;
+				elm('content').innerHTML = str;
+			});
+		}
+		function searchDoc() {
+			ajax('https://1d878d9b.us-south.apigw.appdomain.cloud/searchDoc/', {}, function (data) {
+				let str = "";
+				str += "<table>";
+				for (doc in data.rows) {
+					str += `<tr><td>${doc.title}</td><td>${doc.posted}</td></tr>`;
+				}
+				str += "</table>";
+				elm('content').innerHTML = str;
+			});
+		}
+		function route() {
+			let pos = location.hash;
+			const reDoc = /^#\/doc\/(\d+)$/;
+			let m;
+			if (m = pos.match(reDoc)) {
+				let docId = Number(m[1]);
+				showDoc(docId);
+			} else {
+				searchDoc();
+			}
+		}
+		window.onhashchange = route;
+		route();
+	</script>
+	<div id="header"><a href="#/" id="top">phocom docs</a>
+	</div>
+	<div id="page">
+		<div id="content">
+		</div>
+	</div>
+</body>
+
+</html>

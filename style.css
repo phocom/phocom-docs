@@ -1,0 +1,42 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	background: #f7f7f7;
+}
+
+#header{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background: #7f007f;
+	padding: 8px;
+}
+
+#page{
+	margin-left: 160px;
+	margin-right: 160px;
+	padding:12px;
+	display: block;
+}
+
+#content{
+	padding: 12px;
+	margin-top: 12px;
+	box-shadow: 0 0 6px rgba(0,0,0,0.2);
+	min-height: 480px;
+	padding-top: 80px;
+}
+
+#top{
+	text-decoration: none;
+	font-size:150%;
+	color: #bf7fbf;
+}
+
+#top:hover{
+	color:#ffbfff;
+}
