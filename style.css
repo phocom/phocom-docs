@@ -3,6 +3,34 @@
 	padding: 0;
 }
 
+ul.docslist{
+	list-style: none;
+	list-style-position: inside;
+}
+
+ul.docslist li{
+	border-top: solid 1px #7f7f7f;
+	padding: 8px;
+}
+
+a.title{
+	text-decoration: none;
+	font-size: 24px;
+	color: #000000;
+}
+
+.date{
+	font-size: 16px;
+}
+
+a.title:hover{
+	color: #7f7f7f;
+}
+
+.article{
+	padding: 10px;
+}
+
 body{
 	background: #f7f7f7;
 }
@@ -13,12 +41,12 @@ body{
 	left: 0;
 	width: 100%;
 	background: #7f007f;
-	padding: 8px;
+	padding: 6px;
 }
 
 #page{
-	margin-left: 160px;
-	margin-right: 160px;
+	margin-left: 120px;
+	margin-right: 120px;
 	padding:12px;
 	display: block;
 }
@@ -28,12 +56,12 @@ body{
 	margin-top: 12px;
 	box-shadow: 0 0 6px rgba(0,0,0,0.2);
 	min-height: 480px;
-	padding-top: 80px;
+	padding-top: 40px;
 }
 
 #top{
 	text-decoration: none;
-	font-size:150%;
+	font-size:20px;
 	color: #bf7fbf;
 }
 

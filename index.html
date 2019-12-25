@@ -13,28 +13,35 @@
 		function showDoc(docId) {
 			ajax('https://1d878d9b.us-south.apigw.appdomain.cloud/showDoc/', { 'id': docId }, function (data) {
 				let str = "";
-				str += `<h2>${data.title}</h2>`;
-				str += `<div>${data.text}</div>`;
+				str += `<span class="date">${data.posted}</span><br>`;
+				str += `tag:`;
+				for (tag in data.tags) {
+					str += `<a href="#/tag=${tag}>tag</a>`;
+				}
+				str += `<hr>`;
+				str += `<a class="title" href="#/doc/${data._id}">${data.title}</a>`;
+				str += `<div class="article">${data.text}</div>`;
 				elm('content').innerHTML = str;
 			});
 		}
 		function searchDoc() {
 			ajax('https://1d878d9b.us-south.apigw.appdomain.cloud/searchDoc/', {}, function (data) {
 				let str = "";
-				str += "<table>";
-				for (doc in data.rows) {
-					str += `<tr><td>${doc.title}</td><td>${doc.posted}</td></tr>`;
+				str += `<h2>Docs List</h2>`;
+				str += `<ul class="docslist">`;
+				for (doc in data) {
+					str += `<li>${data[doc].posted}<br><a class="title" href="#/doc/${doc}">${data[doc].title}</a></li>`;
 				}
-				str += "</table>";
+				str += "</ul>";
 				elm('content').innerHTML = str;
 			});
 		}
 		function route() {
 			let pos = location.hash;
-			const reDoc = /^#\/doc\/(\d+)$/;
+			const reDoc = /^#\/doc\/(.+)$/;
 			let m;
 			if (m = pos.match(reDoc)) {
-				let docId = Number(m[1]);
+				let docId = m[1];
 				showDoc(docId);
 			} else {
 				searchDoc();
